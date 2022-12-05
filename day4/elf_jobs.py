@@ -31,20 +31,6 @@ check_fully_contains()
 count = 0
 for i in fully_contained:
     count += 1
-
-# don't
-# 2-4,6-8 
-# 2-3,4-5 
-
-2 < 6 
-4 < 6
-
-
-# do
-# 5-7,7-9, 
-# 2-8,3-7, 
-# 6-6,4-6,  
-# 2-6,4-8
  
 
 print(count)
