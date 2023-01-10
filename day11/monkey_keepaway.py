@@ -64,11 +64,11 @@ def monkey_maths(item, operations):
         b = item + a
     elif operations[0] == '*':
         b = item * a 
-    # c = b / 3   
-    if int(b) % operations[2] == 0:
-        return [int(b), True]
+    c = b / 3   
+    if int(c) % operations[2] == 0:
+        return [int(c), True]
     else:
-        return [int(b), False]    
+        return [int(c), False]    
     
 
 counter = 0 
