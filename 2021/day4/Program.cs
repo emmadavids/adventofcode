@@ -29,7 +29,7 @@ public class Program
     public static void ProcessBingoCallsAndBoard(List<Board> boards, int[] bingoCalls)
     {
         List<Cell> Temporary_holding_board = new();
-        List<string> lines = File.ReadLines("text_input.txt").ToList();
+        List<string> lines = File.ReadLines("full_input.txt").ToList();
         int row = 0;
         int col = 0;
         bool firstIteration = true;
@@ -63,7 +63,6 @@ public class Program
                 row = 0;
                 boards.Add(new Board { Cells = Temporary_holding_board });
                 Temporary_holding_board = new List<Cell>();
-                //push board to boards, reset temporary_holding_board 
                 }
                 else 
                 {
@@ -75,34 +74,24 @@ public class Program
     }
 
     public static int lastCalledNumber = 0;
-    public static void YellNumbers(List<Board> boards, int[] bingoCalls, List<Board> bingoBoards, int numOfBoards)
+    public static void YellNumbers(List<Board> boards, int[] bingoCalls, List<Board> bingoBoards)
     {
         foreach (int call in bingoCalls)
         {   
-            if (numOfBoards == 0)
+            if (boards.Count() == 0)
             {
                 return;
             }
             lastCalledNumber = call;
             MarkNumber(boards, call);
-            
-            // if (winningBoard != null)
-            //     continue;
-
-            (Board wonBoard, bool won) = CheckWin(boards, bingoBoards, numOfBoards);
-            if (won)
-            {   
-                Console.WriteLine(numOfBoards);
-                boards.Remove(wonBoard);
-                numOfBoards--;
-            }
+            CheckWin(boards, bingoBoards);
         }
     }
 
     // public static void CheckBoardsPopulatedCorrectly(List<Board> boards)
     // {
     //     foreach (Board board in boards)
-    //     {   Console.WriteLine("board!");
+    //     {   Console.WriteLine("new board");
     //         foreach (Cell cell in board.Cells)
     //         {
     //             Console.WriteLine($"{cell.Num} ({cell.X}, {cell.Y}, {cell.Flag})");
@@ -118,13 +107,12 @@ public class Program
                 if (call == cell.Num)
                 {
                     cell.Flag = true;
-                    // Console.WriteLine($"Marked cell number {cell.Num} at ({cell.X}, {cell.Y})");
                 }
             }
         }
     }
 
-    public static (Board, bool) CheckWin(List<Board> boards, List<Board> bingoBoards, int numOfBoards)
+    public static void CheckWin(List<Board> boards, List<Board> bingoBoards)
     {
         foreach (Board board in boards)
         {
@@ -140,9 +128,7 @@ public class Program
 
             if (horizontalGroup is not null)
             {
-                Console.WriteLine("horizontal win");
                 bingoBoards.Add(board);
-                return (board, true);
             }
 
             var verticalGroup = board.Cells
@@ -153,24 +139,19 @@ public class Program
             
             if (verticalGroup is not null)    
             {   
-                Console.WriteLine("vertical win");
                 bingoBoards.Add(board);
-                return (board, true);
             }
         }
-            return (new Board(), false);
+        foreach (Board winner in bingoBoards) {
+    boards.Remove(winner);
+    }
+            // return (new Board(), false);
         }
 
-    public static int CalculateWinningScore(Board board)
+    public static void CalculateWinningScore(Board board)
     {
         int losingNum = board.Cells.Where(c => !c.Flag).Sum(c => c.Num);
-        Console.WriteLine($"losing num: {losingNum}");
-        Console.WriteLine($"Losing numbers: {string.Join(", ", board.Cells.Where(c => !c.Flag).Select(c => c.Num))}");
-        Console.WriteLine("Winning Numbers Count: " + board.Cells.Count(c => c.Flag));
-        Console.WriteLine("Losing Numbers Count: " + board.Cells.Count(c => !c.Flag));
-        Console.WriteLine($"Last called number is {lastCalledNumber}");
         Console.WriteLine($"Final result: {losingNum * lastCalledNumber}");
-        return lastCalledNumber * losingNum;
     }
 
     public static void Main()
@@ -178,19 +159,13 @@ public class Program
         List<Board> boards = new();
         List<Board> bingoBoards = new();
         int[] bingoCalls;
-        string[] lines = File.ReadAllLines("text_input.txt");
+        string[] lines = File.ReadAllLines("full_input.txt");
         string[] bingoCallsStr = lines[0].Split(',');
         bingoCalls = bingoCallsStr.Select(int.Parse).ToArray();
         ProcessBingoCallsAndBoard(boards, bingoCalls);
-        int numOfBoards = boards.Count();
-        Console.WriteLine($"number of boards {numOfBoards}");
-        YellNumbers(boards, bingoCalls, bingoBoards, numOfBoards);
-        // CheckBoardsPopulatedCorrectly(bingoBoards);
+        YellNumbers(boards, bingoCalls, bingoBoards);
+        // CheckBoardsPopulatedCorrectly(boards);
         Board lastWin = bingoBoards.Last();
         CalculateWinningScore(lastWin);
-        foreach (Cell cell in lastWin.Cells)
-        {
-            Console.WriteLine($"last win: {cell.Num} ({cell.X}, {cell.Y}, {cell.Flag})");
-        }
     }
 }
