@@ -1,0 +1,5 @@
+/Users/emmadavids/Desktop/adventofcode/2021/day5/obj/Debug/net7.0/day5.csproj.AssemblyReference.cache
+/Users/emmadavids/Desktop/adventofcode/2021/day5/obj/Debug/net7.0/day5.GeneratedMSBuildEditorConfig.editorconfig
+/Users/emmadavids/Desktop/adventofcode/2021/day5/obj/Debug/net7.0/day5.AssemblyInfoInputs.cache
+/Users/emmadavids/Desktop/adventofcode/2021/day5/obj/Debug/net7.0/day5.AssemblyInfo.cs
+/Users/emmadavids/Desktop/adventofcode/2021/day5/obj/Debug/net7.0/day5.csproj.CoreCompileInputs.cache

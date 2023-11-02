@@ -46,10 +46,6 @@ for (int i = 0; i < maxLength; i++)
         oxygenGeneratorRatings.RemoveAll(x => x.ToString()[i] !=mostUsedBit);
         // Console.WriteLine(string.Join(", ", oxygenGeneratorRatings.Select(x => x.ToString())));
     }
-    // if (co2ScrubberRatings.Count >1){
-    //     // Console.WriteLine(string.Join(", ", co2ScrubberRatings.Select(x=>x.ToString())));
-    //     co2ScrubberRatings.RemoveAll(x=>x.ToString()[i] ==mostUsedBit);
-    // }
 }
 
 for (int i = 0; i < maxLength; i++)
@@ -85,12 +81,8 @@ for (int i = 0; i < maxLength; i++)
     }
 
     char mostUsedBit = columnZeroes > columnOnes ? '0' : '1';
-    // if (oxygenGeneratorRatings.Count > 1){
-    //     oxygenGeneratorRatings.RemoveAll(x => x.ToString()[i] !=mostUsedBit);
-    //     // Console.WriteLine(string.Join(", ", oxygenGeneratorRatings.Select(x => x.ToString())));
-    // }
+
     if (co2ScrubberRatings.Count >1){
-        // Console.WriteLine(string.Join(", ", co2ScrubberRatings.Select(x=>x.ToString())));
         co2ScrubberRatings.RemoveAll(x=>x.ToString()[i] ==mostUsedBit);
     }
 }
@@ -106,4 +98,4 @@ int co2_decimal = Convert.ToInt32(co2ScrubberRatings[0], 2);
 Console.WriteLine($"{oxygen_decimal}, {co2_decimal}");
 
 Console.WriteLine(oxygen_decimal*co2_decimal);
-// Console.WriteLine(gamma_decimal * epsilon_decimal);
+
