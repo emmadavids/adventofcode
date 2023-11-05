@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "oPvG44veaJCfV87f2zRZANhni1gpVpA1h00Ar8CTQIKG792qGz2JnOPuA2qsaXSM5UJRm3mpURWagSxKwvKfhg==",
+  "success": true,
+  "projectFilePath": "/Users/emmadavids/Desktop/adventofcode/2021/day5/tests/tests.csproj",
+  "expectedPackageFiles": [
+    "/Users/emmadavids/.nuget/packages/microsoft.codecoverage/17.5.0/microsoft.codecoverage.17.5.0.nupkg.sha512",
+    "/Users/emmadavids/.nuget/packages/microsoft.net.test.sdk/17.5.0/microsoft.net.test.sdk.17.5.0.nupkg.sha512",
+    "/Users/emmadavids/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/Users/emmadavids/.nuget/packages/microsoft.testplatform.objectmodel/17.5.0/microsoft.testplatform.objectmodel.17.5.0.nupkg.sha512",
+    "/Users/emmadavids/.nuget/packages/microsoft.testplatform.testhost/17.5.0/microsoft.testplatform.testhost.17.5.0.nupkg.sha512",
+    "/Users/emmadavids/.nuget/packages/netstandard.library/2.0.0/netstandard.library.2.0.0.nupkg.sha512",
+    "/Users/emmadavids/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
+    "/Users/emmadavids/.nuget/packages/nuget.frameworks/5.11.0/nuget.frameworks.5.11.0.nupkg.sha512",
+    "/Users/emmadavids/.nuget/packages/nunit/3.14.0/nunit.3.14.0.nupkg.sha512",
+    "/Users/emmadavids/.nuget/packages/nunit.analyzers/3.3.0/nunit.analyzers.3.3.0.nupkg.sha512",
+    "/Users/emmadavids/.nuget/packages/nunit3testadapter/4.5.0/nunit3testadapter.4.5.0.nupkg.sha512",
+    "/Users/emmadavids/.nuget/packages/system.reflection.metadata/1.6.0/system.reflection.metadata.1.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}
