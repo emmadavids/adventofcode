@@ -19,10 +19,12 @@ public class Program
         }
     }
     public static class VentUtilities {
-    public static void ProcessInput()
+    public static void ProcessInput(List<string> lines)
     {
-        foreach (string line in File.ReadLines("../../../test_input.txt"))
+        Console.WriteLine("beep");
+        foreach (string line in lines)
         {
+            int hello = 0;
             int x_axis1 = Convert.ToInt32(line[0]);
             int y_axis1 = Convert.ToInt32(line[2]);
             int x_axis2 = Convert.ToInt32(line[7]);
@@ -31,13 +33,12 @@ public class Program
             {
                 int start = Math.Min(x_axis1, x_axis2);
                 int end = Math.Max(x_axis1, x_axis2);
-
                 for (int x = start; x <= end; x++)
-                {
+                {   
+                    Console.WriteLine($"fired {hello} times");
                     Vent existingVent = vents.Find(v => v.X == x && v.Y == y_axis1);
                     if (existingVent != null)
                     {
-                        Console.WriteLine("fired");
                         existingVent.hasBeenTouched++;
                     }
                     else
@@ -45,6 +46,7 @@ public class Program
                         Vent vent = new Vent(x, y_axis1);
                         vents.Add(vent);
                     }
+                    hello++;
                 }
             }
             else if (x_axis1 == x_axis2)
@@ -74,10 +76,12 @@ public class Program
         return vents.Where(c => c.hasBeenTouched > 1).Count();
     }
     }
-    static void MainProgram()
+    static void Main()
     {
         // Program program = new Program();
-        VentUtilities.ProcessInput();
+        List<string> lines = File.ReadLines("test_input.txt").ToList();
+        Console.WriteLine("ifdjfdidf");
+        VentUtilities.ProcessInput(lines);
         Console.WriteLine(VentUtilities.GetOverlaps(vents));
     }
 }

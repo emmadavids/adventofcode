@@ -379,12 +379,6 @@
       "day5/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Microsoft.NET.Test.Sdk": "17.3.2",
-          "NUnit": "3.14.0",
-          "NUnit.Analyzers": "3.3.0",
-          "NUnit3TestAdapter": "4.5.0"
-        },
         "compile": {
           "bin/placeholder/day5.dll": {}
         },
