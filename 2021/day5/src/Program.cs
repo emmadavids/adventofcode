@@ -25,20 +25,15 @@ public class Program
         {
             string[] points = line.Split(" -> ");
 
-            // Split start coordinates
             string[] start = points[0].Split(",");
 
             int x_axis1 = Convert.ToInt32(start[0]);
             int y_axis1 = Convert.ToInt32(start[1]);
 
-            // Split end coordinates
             string[] end = points[1].Split(",");
 
             int x_axis2 = Convert.ToInt32(end[0]); 
             int y_axis2 = Convert.ToInt32(end[1]);
-            
-            // Console.WriteLine($"Start: {x_axis1},{y_axis1}");
-            // Console.WriteLine($"End: {x_axis2},{y_axis2}");
 
             if (y_axis1 == y_axis2)
             {  
@@ -61,13 +56,10 @@ public class Program
             }
             else if (x_axis1 == x_axis2)
             {   
-                // Console.WriteLine("fired");
                 int pointA = Math.Min(y_axis1, y_axis2);
                 int pointB = Math.Max(y_axis1, y_axis2);
-                // Console.WriteLine($"horizontal Start: ({start}, end, {end})"); 
                 for (int y = pointA; y <= pointB; y++)
                 {   
-                    // Console.WriteLine($"Start: {x_axis1},{y}, End: {x_axis2},{pointB}");
                     Vent existingVent = vents.Find(v => v.X == x_axis1 && v.Y == y);
                     if (existingVent != null)
                     {
@@ -80,18 +72,42 @@ public class Program
                     }
                 }
             }
+            else {
+            int x_difference = x_axis1 - x_axis2;
+            int y_difference = y_axis1 - y_axis2;
+
+            int x_inc = x_difference > 0 ? 1 : -1;
+            int y_inc = y_difference > 0 ? 1 : -1; 
+
+            for (int i = 0; i < Math.Abs(x_difference); i++)
+            {       
+                int x = x_axis1 + (i * x_inc);
+                int y = y_axis2 + (i * y_inc);
+                Vent existingVent = vents.Find(v => v.X == x && v.Y == y);
+                if (existingVent != null)
+                {
+                    existingVent.hasBeenTouched++;
+                }
+                else
+                {
+                    Vent vent = new Vent(x, y);
+                    vents.Add(vent);
+                }
+                y++;
+                x++;
+            }
         }
-    }
     
+    }
+    }
     public static int GetOverlaps(List<Vent> vents)
     {
         Console.WriteLine("fired");
         return vents.Where(c => c.hasBeenTouched > 0).Count();
     }
-    }
-    static void Main()
+}
+static void Main()
     {
-        // Program program = new Program();
         List<string> lines = File.ReadLines("full_input.txt").ToList();
         VentUtilities.ProcessInput(lines);
         Console.WriteLine(VentUtilities.GetOverlaps(vents));
