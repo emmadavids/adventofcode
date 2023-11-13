@@ -75,14 +75,16 @@ public class Program
             else {
             int x_difference = x_axis1 - x_axis2;
             int y_difference = y_axis1 - y_axis2;
-
-            int x_inc = x_difference > 0 ? 1 : -1;
-            int y_inc = y_difference > 0 ? 1 : -1; 
-
-            for (int i = 0; i < Math.Abs(x_difference); i++)
-            {       
+            //gets the difference between start and end
+            
+            int x_inc = x_difference > 0 ? -1 : 1;
+            int y_inc = y_difference > 0 ? -1 : 1; 
+            //if its going backwards, its -1, forwards is 1
+            for (int i = 0; i <= Math.Abs(y_difference); i++)
+            {    
                 int x = x_axis1 + (i * x_inc);
-                int y = y_axis2 + (i * y_inc);
+                int y = y_axis1 + (i * y_inc);
+                // Console.WriteLine($"{x},{y}");
                 Vent existingVent = vents.Find(v => v.X == x && v.Y == y);
                 if (existingVent != null)
                 {
@@ -93,16 +95,12 @@ public class Program
                     Vent vent = new Vent(x, y);
                     vents.Add(vent);
                 }
-                y++;
-                x++;
             }
-        }
-    
+        }   
     }
     }
     public static int GetOverlaps(List<Vent> vents)
     {
-        Console.WriteLine("fired");
         return vents.Where(c => c.hasBeenTouched > 0).Count();
     }
 }

@@ -7,15 +7,14 @@ public class Program
 {
     public static List<int> ParseInput(string input)
     {
-        // string[] numberStrings = input.Split(",");
-        // List<int> numbers = new List<int>();
-        // foreach (string number in numberStrings)
-        // {
-        //     int num = Convert.ToInt32(number);
-        //     numbers.Add(num);
-        // }
-        // return numbers;
-        return input.Split(",").Select(int.Parse).ToList();
+        string[] numberStrings = input.Split(",");
+        List<int> numbers = new List<int>();
+        foreach (string number in numberStrings)
+        {
+            int num = Convert.ToInt32(number);
+            numbers.Add(num);
+        }
+        return numbers;
     }
     public static void LanternFishSpawnCalculator(int days, List<int>fishput)
     {
