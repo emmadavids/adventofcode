@@ -7,32 +7,41 @@ public class Program
 {
     public static List<int> ParseInput(string input)
     {
-        string[] numberStrings = input.Split(",");
-        List<int> numbers = new List<int>();
-        foreach (string number in numberStrings)
-        {
-            int num = Convert.ToInt32(number);
-            numbers.Add(num);
-        }
-        return numbers;
+        return input.Split(",").Select(int.Parse).ToList();
     }
     public static void LanternFishSpawnCalculator(int days, List<int>fishput)
-    {
-        while (days != 0)
-        {   
-            for (int i = 0; i < fishput.Count; i++)
-            {    
-                if (fishput[i] == 0)
-                {
-                    fishput.Add(9);
-                    fishput[i] = 7; 
-                }     
-                fishput[i] = fishput[i] -1;  
-            }
-            days --;
+    {   
+        Dictionary<int, long> fishTimers = new Dictionary<int, long>();
+        for (int i = 0; i <= 8; i++)
+        {
+            fishTimers[i] = 0;
         }
-        Console.WriteLine(fishput.Count());
-    }
+        foreach (int fish in fishput)
+        {
+            fishTimers[fish] ++;
+        }
+        for (int day = 1; day <= days; day++)
+        {
+            long newlySpawnedFish = fishTimers[0];
+            // Console.WriteLine(newlySpawnedFish);
+            fishTimers[0] = 0;
+            fishTimers[6] += newlySpawnedFish;
+            fishTimers[8] += newlySpawnedFish;
+        for (int i = 1; i<=8; i++)
+        {   
+            Console.WriteLine(i);
+            fishTimers[i] = fishTimers[i-1];
+        }
+        fishTimers[8] = 0;
+        }
+        long totalFish = 0;
+        foreach (long count in fishTimers.Values) {
+            // Console.WriteLine(count);
+            totalFish += count;
+        }
+
+  Console.WriteLine(totalFish);
+    }   
 static void Main()
 {
     // string testInput = "3,4,3,1,2";
