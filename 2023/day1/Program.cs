@@ -25,7 +25,6 @@ foreach(string line in lines)
             try{  
             if (line.Substring(i, key.Length) == key)
             {
-
                 num += value;
             }}
             catch {
@@ -45,12 +44,8 @@ foreach(string line in lines)
     {
         num = num + num;
     }
-    try{
     var intNum = Int32.Parse(num);
     numbers.Add(intNum);
-    // Console.WriteLine(num);
-    }
-    catch { continue ;}
 }
 
 Console.WriteLine(numbers.Sum());
