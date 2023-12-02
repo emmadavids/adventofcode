@@ -22,7 +22,8 @@ foreach(string line in lines)
     {   
         foreach (var (key,value) in wordNums)
         {   
-            try{  
+            try
+            {  
             if (line.Substring(i, key.Length) == key)
             {
                 num += value;
