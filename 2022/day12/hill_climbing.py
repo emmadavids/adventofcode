@@ -11,6 +11,8 @@ elevation_map = [list(line) for line in elevation_map]
 
 neighbouring_coordinates = [(- 1, 0),(0, -1),(0, 1),(1, 0)]
 
+
+
 start = None
 end = None 
 

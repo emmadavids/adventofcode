@@ -1,20 +1,19 @@
 ﻿using System.Linq;
 
 public class Program
-{  
-    static Dictionary<string, int> signalDecoderUnsorted = new Dictionary<string, int>(){
-        {"acedgfb", 8},
-        {"cdfbe", 5}, 
-        {"gcdfa", 2},
-        {"fbcad", 3},
-        {"dab", 7},
-        {"cefabd", 9},
-        {"cdfgeb", 6},
-        {"eafb", 4},  
-        {"cagedb", 0},
-        {"ab", 1}
-    }; //sort these 
-    
+{   
+    static Dictionary<string, string> signalDecoderUnsorted = new Dictionary<string, string>(){
+        {"acedgfb", "8"},
+        {"cdfbe", "5"}, 
+        {"gcdfa", "2"},
+        {"fbcad", "3"},
+        {"dab", "7"},
+        {"cefabd", "9"},
+        {"cdfgeb", "6"},
+        {"eafb", "4"},  
+        {"cagedb", "0"},
+        {"ab", "1"}
+    };
     public static string SortChars(string s)
     {
         char[] chars = s.ToCharArray();
@@ -22,16 +21,15 @@ public class Program
         return new string(chars);
     }
 
-    static Dictionary<string, int> signalDecoder = new Dictionary<string, int>();
+    static Dictionary<string, string> signalDecoder = new Dictionary<string, string>();
 
     public static void SortDictionary()
     {
-    foreach (KeyValuePair<string, int> pair in signalDecoderUnsorted)
-    {
-        string sortedKey = SortChars(pair.Key);
-        Console.WriteLine($"{sortedKey}, {pair.Value}");
-        signalDecoder.Add(sortedKey, pair.Value);
-    }
+    foreach (KeyValuePair<string, string> pair in signalDecoderUnsorted)
+        {
+            string sortedKey = SortChars(pair.Key);
+            signalDecoder.Add(sortedKey, pair.Value);
+        }
     }
 
     public static List<string> ParseInput(string text)
@@ -45,44 +43,53 @@ public class Program
         };
         return afterDelimiterSegments;
     }
-
     public static void DetectChars(List<string> parsedInput)
     {
         List<int> allDecodedNums = new List<int>();
         foreach (string line in parsedInput)
         {   
-            string sortedKey;
-            // Console.WriteLine(line);
+            string lineNum = "";
             var decodedNums = line.Split(" ") 
-                                .Where(s => !String.IsNullOrEmpty(s))
-                                .Select(s => {
-                sortedKey = SortChars(s);
-                // Console.WriteLine(sortedKey);
-                int value;
-                if (signalDecoder.TryGetValue(sortedKey, out value))
+                            .Where(s => !String.IsNullOrEmpty(s));
+
+            foreach(string splitNum in decodedNums)
+            {
+                string sortedKey = SortChars(splitNum);
+                if (signalDecoder.ContainsKey(sortedKey))
                 { 
-                    Console.WriteLine($"value; {value}");
-                    return value;
+                    lineNum += signalDecoder[sortedKey];
+                }    
+                else if (splitNum.Length == 2) 
+                {
+                    lineNum += 1;
                 }
-                else 
-                { 
-                    Console.WriteLine("fired");
-                    return 0;  
-                }       
-                });
-            allDecodedNums.AddRange(decodedNums);
+                else if (splitNum.Length ==3)
+                {
+                    lineNum +=7;
+                }
+                else if (splitNum.Length ==4)
+                {
+                    lineNum +=4;
+                }
+            }
+        try
+        {
+            int decodedInts = Int32.Parse(lineNum);
+            allDecodedNums.Add(decodedInts);
         }
-        List<int> decodedList = allDecodedNums.ToList();
-        foreach (int num in decodedList) {
-        Console.WriteLine(num);  
-        
-}
-    }
-        // var summy = allDecodedNums.SelectMany(x => Convert.ToInt32(x)).Sum();
-        // Console.WriteLine(summy);
-    
+        catch 
+        {
+            continue;
+        }
+        }
+
+        foreach (int num in allDecodedNums) 
+        {
+            Console.WriteLine(num);  
+        }
+    }    
     static void Main()
-    {
+    {   
         string filepath = "test_input.txt";
         List<string> parsedInput = ParseInput(filepath);
         SortDictionary();
