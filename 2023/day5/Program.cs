@@ -53,18 +53,30 @@ foreach (long seed in seeds)
             long diff = Math.Abs(currentSeed-source);
             long destination = long.Parse(sgmnt[0]);
             seedNumber = destination + diff;
+            if (seedDictionary[currentResource] == null)
+            {
+                seedDictionary[currentResource] = seedNumber; 
+            }
             if (seedDictionary.ContainsKey(currentResource) && seedDictionary[currentResource] > seedNumber)
             {
                 seedDictionary[currentResource] = seedNumber;
                 // Console.WriteLine("seed number" + seedNumber);
             }
-        else seedDictionary[currentResource] = currentSeed;}
-        }}
+        }
+        else seedDictionary[currentResource] = currentSeed;
+        }
+        }
     }
-    foreach (var pair in seedDictionary)
+    // foreach (var pair in seedDictionary)
+    //     {   
+    //         Console.WriteLine($"Resource: {pair.Key}, SeedNumber: {pair.Value}");
+    //         locationNums.Add(pair.Value);
+    //     }
+        foreach (var pair in seedDictionary)
         {   
             Console.WriteLine($"Resource: {pair.Key}, SeedNumber: {pair.Value}");
-            locationNums.Add(pair.Value);
+            if (pair.Key == "humidity"){
+            locationNums.Add(pair.Value);};
         }
     seedDictionary.Clear();
 }
