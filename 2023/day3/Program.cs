@@ -93,7 +93,6 @@ for (int currentLine = 0; currentLine < lines.Count; currentLine++)
                             gears.Add((xCoord!,yCoord!).ToTuple(),  new List<int> { partNumber });
                         }
                 }
-            
                 }
                 count ++;
             }
