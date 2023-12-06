@@ -48,7 +48,7 @@ foreach (long seed in seeds)
             long source = long.Parse(sgmnt[1]);
             long soilRange = long.Parse(sgmnt[2]) ;
 
-        if (currentSeed >= source && currentSeed <= source + soilRange -1) 
+        if (currentSeed >= source && currentSeed <= source + soilRange) 
         {
             long diff = Math.Abs(currentSeed-source);
             long destination = long.Parse(sgmnt[0]);
