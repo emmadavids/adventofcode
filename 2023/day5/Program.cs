@@ -2,9 +2,9 @@
 
 List<string> lines = File.ReadLines("test_input.txt").ToList();
 List<long> locationNums = new List<long>();
-
 List<long> seeds = new List<long>();
 Dictionary<string, long> seedDictionary = new Dictionary<string, long>();
+string seedKey;
 
 foreach (string line in lines)
 {
@@ -48,7 +48,7 @@ foreach (long seed in seeds)
             long source = long.Parse(sgmnt[1]);
             long soilRange = long.Parse(sgmnt[2]) ;
 
-        if (currentSeed >= source - soilRange && currentSeed <= source + soilRange) 
+        if (currentSeed >= source && currentSeed <= source + soilRange -1) 
         {
             long diff = Math.Abs(currentSeed-source);
             long destination = long.Parse(sgmnt[0]);
@@ -62,21 +62,22 @@ foreach (long seed in seeds)
                 seedDictionary[currentResource] = seedNumber;
                 // Console.WriteLine("seed number" + seedNumber);
             }
+            currentSeed = seedNumber;
         }
         else seedDictionary[currentResource] = currentSeed;
         }
         }
     }
-    // foreach (var pair in seedDictionary)
-    //     {   
-    //         Console.WriteLine($"Resource: {pair.Key}, SeedNumber: {pair.Value}");
-    //         locationNums.Add(pair.Value);
-    //     }
+   
         foreach (var pair in seedDictionary)
         {   
             Console.WriteLine($"Resource: {pair.Key}, SeedNumber: {pair.Value}");
-            if (pair.Key == "humidity"){
-            locationNums.Add(pair.Value);};
+            if (!pair.Key.Contains("seed") && !pair.Key.Contains("soil"))
+            { 
+                Console.WriteLine("fired");
+                locationNums.Add(pair.Value);
+            
+            };
         }
     seedDictionary.Clear();
 }
