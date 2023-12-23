@@ -42,7 +42,7 @@ public class Program
     }
     
     public static void FindStart(string[] lines)
-    {
+    {   
         for (int i = 0; i < lines.Count(); i++)
         {
             if (lines[i].Contains('S'))
@@ -53,7 +53,7 @@ public class Program
                 Coordinate startingCoordinate = new Coordinate(x, y);
                 coordinates.Add(startingCoordinate);
                 visitedNodes.Add((x, y));
-                break;
+                 
             }   
         }
     }
@@ -108,97 +108,63 @@ public class Program
         
     
 
-    // public static void BuildPipeMap(string[] lines)
-    // {
-    //     bool keepLooping = true;
+    public static void BuildPipeMap(string[] lines)
+    {   
+        int count = 13700;
+        bool keepLooping = true;
         
-    //     while (keepLooping)
-    //     {
-    //     List<(int, int)> currentPipeDirection = exits[neighbouringPipe];
-    //     int x3 = x + currentPipeDirection[1].Item1;
-    //     int y3 = y + currentPipeDirection[1].Item2;
-    //         currentPipeDirection = exits[neighbouringPipe];
-    //         if (visitedNodes.Contains((x3,y3)))
-    //         {
-    //             x += currentPipeDirection[0].Item1;
-    //             y += currentPipeDirection[0].Item2;
-    //         }
-    //         else {
-    //             x += currentPipeDirection[1].Item1;
-    //             y += currentPipeDirection[1].Item2;
-    //         }
+        while (keepLooping)
+        {
+
+            // if (y -1 >= 0 && lines[x][y-1] == 'S')
+            // {   
+            //     visitedNodes.Add((x, y-1));
+            //     break;
+            // }
+        List<(int, int)> currentPipeDirection = exits[neighbouringPipe];
+        int x3 = x + currentPipeDirection[1].Item1;
+        int y3 = y + currentPipeDirection[1].Item2;
+        int x4 = x + currentPipeDirection[0].Item1;
+        int y4 = y + currentPipeDirection[0].Item2;
+
+    
+            currentPipeDirection = exits[neighbouringPipe];
+            if (visitedNodes.Contains((x3,y3)))
+            {
+                x += currentPipeDirection[0].Item1;
+                y += currentPipeDirection[0].Item2;
+            }
+            else {
+                x += currentPipeDirection[1].Item1;
+                y += currentPipeDirection[1].Item2;
+            }
             
-    //         visitedNodes.Add((x, y));
-    //         // foreach (var (coordX, coordY) in visitedNodes)
-    //         //     {
-    //         //         Console.WriteLine($"char {neighbouringPipe} X: {coordX}, Y: {coordY}");
-    //         //     }
+            visitedNodes.Add((x, y));
+            Console.WriteLine($"char {neighbouringPipe} X: {x +1}, Y: {y}");
+                // foreach (var (coordX, coordY) in visitedNodes)
+                //     {
+                //         Console.WriteLine($"char {neighbouringPipe} X: {coordX}, Y: {coordY}");
+                //     }
 
-    //         neighbouringPipe = lines[x][y];
-
-    //         if (lines[x][y] == 'S')
-    //         {
-    //             keepLooping = false;
-    //             break;
-    //         }
-        
-    // }}
-public static void BuildPipeMap(string[] lines)
-{
-    bool keepLooping = true;
-
-    while (keepLooping)
-    {
-        if (x >= 0 && x < lines.Length && y >= 0 && y < lines[x].Length)
-        {
-            List<(int, int)> currentPipeDirection = exits[neighbouringPipe];
-            int x3 = x + currentPipeDirection[1].Item1;
-            int y3 = y + currentPipeDirection[1].Item2;
-
-            if (x3 >= 0 && x3 < lines.Length && y3 >= 0 && y3 < lines[x].Length)
-            {
-                currentPipeDirection = exits[neighbouringPipe];
-                
-                if (visitedNodes.Contains((x3, y3)))
-                {
-                    x += currentPipeDirection[0].Item1;
-                    y += currentPipeDirection[0].Item2;
-                }
-                else
-                {
-                    x += currentPipeDirection[1].Item1;
-                    y += currentPipeDirection[1].Item2;
-                }
-
-                visitedNodes.Add((x, y));
-
-                neighbouringPipe = lines[x][y];
-
-                if (lines[x][y] == 'S')
-                {
-                    keepLooping = false;
-                    break;
-                }
+            neighbouringPipe = lines[x][y];
+            
+            if (y -1 >= 0 && lines[x][y-1] == 'S')
+            {   
+                visitedNodes.Add((x, y-1));
+                break;
             }
-            else
-            {
-                Console.WriteLine("Error: Out of bounds at x:{0}, y:{1}", x3, y3);
-                // Handle the out-of-bounds scenario
-                keepLooping = false;
-            }
-        }
-        else
-        {
-            Console.WriteLine("Error: Out of bounds at x:{0}, y:{1}", x, y);
-            // Handle the out-of-bounds scenario
-            keepLooping = false;
-        }
-    }
-}
+
+            count -=1;
+    }}
 
 
     public static int CountSteps()
-    {
+    {   
+        foreach (var (coordX, coordY) in visitedNodes)
+            {
+                Console.WriteLine($"char {neighbouringPipe} X: {coordX}, Y: {coordY}");
+            }
+        Console.WriteLine(visitedNodes.Count);
         if (visitedNodes.Count % 2 == 0)
         {
             return visitedNodes.Count / 2;
@@ -216,6 +182,7 @@ public static void Main()
     TraverseFromStart(lines);
     BuildPipeMap(lines);
     Console.WriteLine(CountSteps());
+
 }
 }    
 
