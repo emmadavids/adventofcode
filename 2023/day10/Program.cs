@@ -110,7 +110,6 @@ public class Program
             }
             
             visitedNodes.Add((x, y));
-
             neighbouringPipe = lines[x][y];
             
             if (y -1 >= 0 && lines[x][y-1] == 'S')
@@ -143,6 +142,12 @@ public static bool IsBetween(int x, int y, List<(int, int)> pipeEdges)
 
     for (int i = 0, j = pipeEdges.Count - 1; i < pipeEdges.Count; j = i++)
     {
+        //if edge one vertically is less than or equal to coord pased in
+        //and edge two vertically (along same line) is also less than coord passed in
+        //or if edge two is vertically less than or equal to coord passed in 
+        //horizontal is less than the difference between x & x of both edges
+        //times by point being passed in minus vertical of edge one divided by
+        //the y coord of pipeedge 2 minus y coord of pipedge 1 plus pipeedge1
         if (((pipeEdges[i].Item2 <= y && y < pipeEdges[j].Item2) ||
             (pipeEdges[j].Item2 <= y && y < pipeEdges[i].Item2)) &&
             (x < (pipeEdges[j].Item1 - pipeEdges[i].Item1) *
