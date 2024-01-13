@@ -86,10 +86,10 @@ public static void CalculateOverallSteps(List<int> verticalLinesToBeAdded,
 
 public static void Main()
 {
-        List<string> lines = File.ReadLines("full_input.txt").ToList();
-        List<(int, int)> galaxyCoordinates = FindCoordinatesOfGalaxies(lines);
-        List<int> verticalLines = FindVerticalLinesForExpansion(lines);
-        List<int> horizontalLines = FindHorizontalLinesForExpansion(lines);
-        CalculateOverallSteps(verticalLines,horizontalLines, galaxyCoordinates);
+    List<string> lines = File.ReadLines("full_input.txt").ToList();
+    List<(int, int)> galaxyCoordinates = FindCoordinatesOfGalaxies(lines);
+    List<int> verticalLines = FindVerticalLinesForExpansion(lines);
+    List<int> horizontalLines = FindHorizontalLinesForExpansion(lines);
+    CalculateOverallSteps(verticalLines,horizontalLines, galaxyCoordinates);
 }
 }
