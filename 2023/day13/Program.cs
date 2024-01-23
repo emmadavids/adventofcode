@@ -1,6 +1,6 @@
 using System;
 
-public class Progrom
+public class Program
 
 {
 
@@ -16,6 +16,7 @@ public class Progrom
     public static void HandleValleyOfMirrors(List<string> mirrorPatterns)
 
     {
+        Console.WriteLine(mirrorPatterns.Count);
         foreach (string mirrorPattern in mirrorPatterns)
         {
             List<string> mirrorLines = mirrorPattern.Split(Environment.NewLine).ToList();
@@ -23,7 +24,8 @@ public class Progrom
         }
         Console.WriteLine(mirrorData.Sum());
     }
-
+    public static int times = 0;
+    
     public static List<(int, string)> FindIndexOfReflection(List<string> mirrorLines)
     {
         List<(int, string)> reflectionIndex = new();
@@ -43,26 +45,24 @@ public class Progrom
 
         foreach (int idx in Enumerable.Range(0, mirrorLines[0].Count()))
 
-        {
-
+        {   
+            // Console.WriteLine($"fired {times} times");
+            times ++;
             if (idx <= mirrorLines[0].Length - 2) {
                 if (mirrorLines.All(x => x[idx] == x[idx + 1]))
-
                 {
                     reflectionIndex.Add((idx, "vertical"));
                     KeepMirroringToFindReflection(reflectionIndex, mirrorLines);
                     break;
                 }
             }
-
         }
         return reflectionIndex;
     }
 
-    public static int KeepMirroringToFindReflection(List<(int, string)> mirrorIndex, List<string> mirrorLines)
+    public static void KeepMirroringToFindReflection(List<(int, string)> mirrorIndex, List<string> mirrorLines)
 
     {
-
         bool keepMirroring = true;
         int mirrorIdx = mirrorIndex[0].Item1;
         int topReflection = 1;
@@ -74,15 +74,16 @@ public class Progrom
         {
             if (mirrorIdx == 0)
             {
-                    break;
+                break;
             }
             if (mirrorIndex[0].Item2 == "horizontal")
-            {
-                if (topReflection + mirrorIdx >= mirrorLines.Count() - 1 || bottomReflection + mirrorIdx >= mirrorLines.Count() - 1)
+            {   
+                if(mirrorIdx - topReflection < 0 || mirrorIdx + bottomReflection >= mirrorLines.Count) 
                 {
                     mirrorData.Add((mirrorIdx + 1) * 100);
                     break;
                 }
+                //top reflection should never be more than mirror
                 if (mirrorLines[mirrorIdx - topReflection] == mirrorLines[mirrorIdx + bottomReflection])
                 {
                     topReflection += 1;
@@ -95,11 +96,12 @@ public class Progrom
             }
             else
             {
-                if (leftReflection + mirrorIdx >= mirrorLines[0].Length - 1 || rightReflection + mirrorIdx >= mirrorLines[0].Length - 1)
+                if (mirrorIndex[0].Item2 == "vertical"){
+                if(mirrorIdx - leftReflection < 0 || mirrorIdx + rightReflection >=  mirrorLines[0].Length) 
                 {
-                    Console.WriteLine(mirrorIdx + 1);
+                    // Console.WriteLine(mirrorIdx + 1);
                     mirrorData.Add(mirrorIdx + 1);
-                    keepMirroring = false;
+                    break;
                 }
                 if (mirrorLines.All(x => x[mirrorIdx - leftReflection] == x[mirrorIdx + rightReflection]))
                 {
@@ -110,14 +112,13 @@ public class Progrom
                 {
                     break;
                 }
-            }
+            }}
         }
-        return 0;
     }
 
     public static void Main()
     {
-        string lines = File.ReadAllText("test_input.txt");
+        string lines = File.ReadAllText("full_input.txt");
         List<string> mirrorPatterns = ParseMirrorPatterns(lines);
         HandleValleyOfMirrors(mirrorPatterns);
     }

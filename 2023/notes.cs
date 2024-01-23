@@ -91,7 +91,6 @@ public class Progrom
                             {
                                    break;
                             }
-
                      }
                      else if (mirrorIndex[0].Item2 == "vertical")
                      {
