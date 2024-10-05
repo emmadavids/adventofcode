@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "TCxQFvaYdiBQwTkinemIGm4CMROvGC3VPThezuoTgs091Y4bJ4yRPiRqwWCo5RP1XbSArLDoOCRVT0/SMikIpg==",
+  "dgSpecHash": "PVCo6jYAUYcNkNJ8hu2GIMxsJLZA6F5trNUBPAu0JDJoFGVa7aImNxxDgMdfZC6X7ThAXRw366uLZeIgjobRrg==",
   "success": true,
   "projectFilePath": "/Users/emmadavids/Desktop/adventofcode/2021/day4/day4.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/emmadavids/.nuget/packages/microsoft.netcore.app.ref/7.0.17/microsoft.netcore.app.ref.7.0.17.nupkg.sha512",
+    "/Users/emmadavids/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.17/microsoft.aspnetcore.app.ref.7.0.17.nupkg.sha512",
+    "/Users/emmadavids/.nuget/packages/microsoft.netcore.app.host.osx-arm64/7.0.17/microsoft.netcore.app.host.osx-arm64.7.0.17.nupkg.sha512"
+  ],
   "logs": []
 }
