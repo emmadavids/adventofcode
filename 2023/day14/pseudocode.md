@@ -1,0 +1,3 @@
+-parse input into list, split at commas
+-store ascii characters in dictionary
+-for each item in list split again 

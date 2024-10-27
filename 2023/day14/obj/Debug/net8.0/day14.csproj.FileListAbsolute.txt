@@ -1,0 +1,15 @@
+/Users/emmadavids/Desktop/adventofcode/2023/day14/obj/Debug/net8.0/day14.GeneratedMSBuildEditorConfig.editorconfig
+/Users/emmadavids/Desktop/adventofcode/2023/day14/obj/Debug/net8.0/day14.AssemblyInfoInputs.cache
+/Users/emmadavids/Desktop/adventofcode/2023/day14/obj/Debug/net8.0/day14.AssemblyInfo.cs
+/Users/emmadavids/Desktop/adventofcode/2023/day14/obj/Debug/net8.0/day14.csproj.CoreCompileInputs.cache
+/Users/emmadavids/Desktop/adventofcode/2023/day14/obj/Debug/net8.0/day14.sourcelink.json
+/Users/emmadavids/Desktop/adventofcode/2023/day14/bin/Debug/net8.0/day14
+/Users/emmadavids/Desktop/adventofcode/2023/day14/bin/Debug/net8.0/day14.deps.json
+/Users/emmadavids/Desktop/adventofcode/2023/day14/bin/Debug/net8.0/day14.runtimeconfig.json
+/Users/emmadavids/Desktop/adventofcode/2023/day14/bin/Debug/net8.0/day14.dll
+/Users/emmadavids/Desktop/adventofcode/2023/day14/bin/Debug/net8.0/day14.pdb
+/Users/emmadavids/Desktop/adventofcode/2023/day14/obj/Debug/net8.0/day14.dll
+/Users/emmadavids/Desktop/adventofcode/2023/day14/obj/Debug/net8.0/refint/day14.dll
+/Users/emmadavids/Desktop/adventofcode/2023/day14/obj/Debug/net8.0/day14.pdb
+/Users/emmadavids/Desktop/adventofcode/2023/day14/obj/Debug/net8.0/day14.genruntimeconfig.cache
+/Users/emmadavids/Desktop/adventofcode/2023/day14/obj/Debug/net8.0/ref/day14.dll
