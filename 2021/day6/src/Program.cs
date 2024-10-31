@@ -36,11 +36,10 @@ public class Program
         }
         long totalFish = 0;
         foreach (long count in fishTimers.Values) {
-            // Console.WriteLine(count);
             totalFish += count;
         }
 
-  Console.WriteLine(totalFish);
+    Console.WriteLine(totalFish);
     }   
 static void Main()
 {

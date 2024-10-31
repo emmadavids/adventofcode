@@ -1,4 +1,3 @@
-/Users/emmadavids/Desktop/adventofcode/2021/day3/obj/Debug/net7.0/day3.csproj.AssemblyReference.cache
 /Users/emmadavids/Desktop/adventofcode/2021/day3/obj/Debug/net7.0/day3.GeneratedMSBuildEditorConfig.editorconfig
 /Users/emmadavids/Desktop/adventofcode/2021/day3/obj/Debug/net7.0/day3.AssemblyInfoInputs.cache
 /Users/emmadavids/Desktop/adventofcode/2021/day3/obj/Debug/net7.0/day3.AssemblyInfo.cs
@@ -13,3 +12,4 @@
 /Users/emmadavids/Desktop/adventofcode/2021/day3/obj/Debug/net7.0/day3.pdb
 /Users/emmadavids/Desktop/adventofcode/2021/day3/obj/Debug/net7.0/day3.genruntimeconfig.cache
 /Users/emmadavids/Desktop/adventofcode/2021/day3/obj/Debug/net7.0/ref/day3.dll
+/Users/emmadavids/Desktop/adventofcode/2021/day3/obj/Debug/net7.0/day3.sourcelink.json
