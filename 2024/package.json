@@ -1,0 +1,13 @@
+{
+  "name": "adventofcode",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node dist/day9/src/index.js"
+  },
+  "dependencies": {
+  
+  },
+  "devDependencies": {
+    "typescript": "^4.x.x"
+  }
+}
