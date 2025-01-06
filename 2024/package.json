@@ -4,10 +4,8 @@
   "scripts": {
     "start": "node dist/day9/src/index.js"
   },
-  "dependencies": {
-  
-  },
   "devDependencies": {
-    "typescript": "^4.x.x"
+    "ts-node": "^10.9.2",
+    "typescript": "^4.9.5"
   }
 }

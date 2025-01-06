@@ -1,7 +1,9 @@
-import { readFileSync } from 'fs';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const fs_1 = require("fs");
 const symbols = ['+', '*', '|'];
 function parseInput() {
-    const input = readFileSync('././full_input.txt', 'utf-8').trim();
+    const input = (0, fs_1.readFileSync)('././full_input.txt', 'utf-8').trim();
     const calibrationEquations = input.trim()
         .split("\n")
         .map((line) => {

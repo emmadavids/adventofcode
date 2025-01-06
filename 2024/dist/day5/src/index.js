@@ -1,6 +1,8 @@
-import { readFileSync } from 'fs';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const fs_1 = require("fs");
 function parseInput() {
-    const input = readFileSync('././testInput.txt', 'utf-8').trim();
+    const input = (0, fs_1.readFileSync)('././testInput.txt', 'utf-8').trim();
     const [pageOrderingRulesUnprocessed, updatePageNumbersUnprocessed] = input.split(/^\s*$/m, 2);
     const pageOrderingRules = pageOrderingRulesUnprocessed.trim()
         .split("\n")

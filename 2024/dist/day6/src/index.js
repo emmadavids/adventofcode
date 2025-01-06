@@ -1,9 +1,11 @@
-import { readFileSync } from 'fs';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const fs_1 = require("fs");
 const obstructionCoordinates = [];
 const visitedPositions = [];
 let guardStartingPostion = [];
 function parseInput() {
-    const input = readFileSync('././fullInput.txt', 'utf-8').trim();
+    const input = (0, fs_1.readFileSync)('././fullInput.txt', 'utf-8').trim();
     const labMap = input.trim()
         .split("\n")
         .map(line => line.split(""));
@@ -25,9 +27,9 @@ const isNotInObstructions = (x, y) => {
 };
 const labMap = parseInput();
 const directions = [
-    [0, 1], //right
-    [1, 0], //down
-    [0, -1], //left
+    [0, 1],
+    [1, 0],
+    [0, -1],
     [-1, 0], //up
 ];
 //up ->  right --> down --> left --> up --> right

@@ -11,6 +11,6 @@
     "rootDir": "./src",
     "resolveJsonModule": true
   },
-  "include": ["src/day9/**/*"],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }
